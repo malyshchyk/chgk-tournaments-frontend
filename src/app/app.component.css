@@ -1,0 +1,21 @@
+app-header {
+  display: block;
+  top: 0;
+  width: 100%;
+  text-align: center;
+}
+
+app-title,
+app-summary {
+  display: block;
+  max-width: 700px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+app-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
