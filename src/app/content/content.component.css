@@ -1,0 +1,6 @@
+app-teams-picker {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 0.5rem;
+    min-height: 100%;
+}

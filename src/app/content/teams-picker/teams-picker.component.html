@@ -1,0 +1,39 @@
+<table class="controls">
+    <tbody>
+        <tr>
+            <td>
+                <span (click)="clearAll()">Clear</span>
+            </td>
+            <td></td>
+            <td>
+                Потрачено: {{ score }}.
+                Осталось: {{ spendLimit - score }}.
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<table class="teamlist">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Команда</th>
+            <th>Цена</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (team of teams; track team) {
+        <tr>
+            <td (click)="pickTeam(team)">
+                <input type="checkbox" [checked]="team.picked"
+                    [disabled]="!team.picked && spendLimit - score - team.cost < 0">
+            </td>
+            <td (click)="pickTeam(team)" 
+            [style.color]="(!team.picked && spendLimit - score - team.cost < 0) ? 'rgba(128, 128, 128, 1)' : 'currentColor'">{{ team.name }}</td>
+        <td (click)="pickTeam(team)" 
+            [style.color]="(!team.picked && spendLimit - score - team.cost < 0) ? 'rgba(128, 128, 128, 1)' : 'currentColor'">{{ team.cost }}</td>
+        </tr>
+
+        }
+    </tbody>
+</table>

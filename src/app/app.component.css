@@ -1,21 +1,18 @@
-app-header {
-  display: block;
-  top: 0;
-  width: 100%;
+app-header,
+app-footer {
+  display: flex;
   text-align: center;
+  justify-content: center;
 }
 
-app-title,
-app-summary {
-  display: block;
+app-content {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 2rem;
+  min-height: 100%;
+  
+  width: 100%;
   max-width: 700px;
   margin-right: auto;
   margin-left: auto;
-}
-
-app-footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
 }
