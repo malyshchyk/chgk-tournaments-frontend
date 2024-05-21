@@ -1,26 +1,5 @@
-p, nav {
-    text-align: center;
-}
-
-a {
-    color: inherit;
-    text-decoration: underline;
-}
-
-nav {
-    margin: 10px 0 10px 0;
-}
-
-.controls {
-    margin-bottom: 10px;
-}
-
-.controls,
-.teamlist {
+.tournaments {
     width: 100%;
-}
-
-.teamlist {
     border: 1px solid rgba(128, 128, 128, 0.5);
     border-collapse: separate;
     border-spacing: 0;
@@ -28,39 +7,40 @@ nav {
     overflow: hidden;
 }
 
-.teamlist th,
-.teamlist td {
+.tournaments th,
+.tournaments td {
     border: 0.5px solid rgba(128, 128, 128, 0.5);
 }
 
-.teamlist td {
+.tournaments td {
     padding: 10px;
     cursor: pointer;
 }
 
-.teamlist th {
+.tournaments th {
     padding: 15px;
 }
 
-.controls td:first-child,
-.teamlist td:first-child {
+.tournaments td:first-child {
     text-align: center;
     width: 10%;
 }
 
-.teamlist td:nth-child(2) {
+.tournaments td:nth-child(2) {
     width: 70%;
 }
 
-.controls td:nth-child(3) {
-    text-align: right;
-}
 
-.teamlist td:nth-child(3) {
+.tournaments td:nth-child(3) {
     text-align: center;
 }
 
 span {
     text-decoration: underline;
     cursor: pointer;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
 }

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { TitleComponent } from './title/title.component';
 import { TeamsPickerComponent } from './teams-picker/teams-picker.component';
+import { TournamentsComponent } from './tournaments/tournaments.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-content',
@@ -8,6 +10,8 @@ import { TeamsPickerComponent } from './teams-picker/teams-picker.component';
   imports: [
     TitleComponent,
     TeamsPickerComponent,
+    TournamentsComponent,
+    RouterOutlet,
   ],
   templateUrl: './content.component.html',
   styleUrl: './content.component.css'

@@ -1,23 +1,42 @@
 import { Component } from '@angular/core';
 import { RatingApiService } from '../../rating-api.service';
+import { ActivatedRoute, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-teams-picker',
   standalone: true,
-  imports: [],
+  imports: [
+    RouterOutlet,
+    RouterLink,
+    RouterLinkActive,
+  ],
   templateUrl: './teams-picker.component.html',
   styleUrl: './teams-picker.component.css'
 })
 export class TeamsPickerComponent {
   spendLimit = 100;
   score = 0;
-  tournamentId = 9854;
+  tournamentId!: number;
 
   teams: any[] = [];
 
-  constructor(ratingApiService: RatingApiService) {
-    ratingApiService.getTeams(this.tournamentId).subscribe(response => {
+  isLoading = false;
+
+  constructor(
+    private ratingApiService: RatingApiService,
+    private route: ActivatedRoute
+  ) {
+    this.route.params.subscribe(params => {
+      this.tournamentId = params['tournament_id'];
+      this.getTeams(this.tournamentId);
+    });
+  }
+
+  getTeams(tournamentId: number): void {
+    this.isLoading = true;
+    this.ratingApiService.getTeams(tournamentId).subscribe(response => {
       this.teams = response;
+      this.isLoading = false;
     });
   }
 

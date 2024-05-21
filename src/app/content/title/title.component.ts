@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './title.component.css'
 })
 export class TitleComponent {
-  tournament = 'Студенческий Чемпионат Беларуси';
+  tournament = 'Фэнтези ЧГК по рейтингу';
 }

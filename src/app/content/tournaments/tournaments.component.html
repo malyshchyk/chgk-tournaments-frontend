@@ -1,0 +1,15 @@
+<table class="tournaments">
+    <tbody>
+        @for (tournament of tournaments; track tournament) {
+        <tr>
+            <nav>
+                <a [routerLink]="['/tournaments', tournament.id]" routerLinkActive="activebutton"
+                    ariaCurrentWhenActive="page">
+                    <td>{{ tournament.name }}</td>
+                </a>
+            </nav>
+        </tr>
+
+        }
+    </tbody>
+</table>
