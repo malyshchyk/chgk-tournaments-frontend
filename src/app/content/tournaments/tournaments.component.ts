@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterOutlet, RouterLink, RouterLinkActive, ActivatedRoute } from '@angular/router';
+import { RatingApiService } from '../../rating-api.service';
 
 @Component({
   selector: 'app-current-tournaments',
@@ -13,10 +14,31 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './tournaments.component.css'
 })
 export class TournamentsComponent {
-  tournaments = [
-    { id: 9854, name: 'Студенческий Чемпионат Беларуси' },
-    { id: 10728, name: 'Zhodino Minor 2024' },
-    { id: 10749, name: 'Кубок 15-летия "Borisov Brain Club"' },
-  ];
+  isLoadingPast = false;
+  isLoadingUpcoming = false;
+  countryId = 5;
+  pastTournaments: any[] = [];
+  upcomingTournaments: any[] = [];
 
+  constructor(
+    private ratingApiService: RatingApiService,
+    private route: ActivatedRoute
+  ) {
+    this.route.params.subscribe(() => {
+      this.getTournaments(this.countryId);
+    });
+  }
+
+  getTournaments(countryId: number): void {
+    this.isLoadingPast = true;
+    this.isLoadingUpcoming = true;
+    this.ratingApiService.getTournaments(countryId, true).subscribe(response => {
+      this.pastTournaments = response;
+      this.isLoadingPast = false;
+    });
+    this.ratingApiService.getTournaments(countryId, false).subscribe(response => {
+      this.upcomingTournaments = response;
+      this.isLoadingUpcoming = false;
+    });
+  }
 }

@@ -14,6 +14,7 @@
 
 .tournaments td {
     padding: 10px;
+    text-align: center;
     cursor: pointer;
 }
 
@@ -22,17 +23,11 @@
 }
 
 .tournaments td:first-child {
-    text-align: center;
-    width: 10%;
+    width: 20%;
 }
-
-.tournaments td:nth-child(2) {
-    width: 70%;
-}
-
 
 .tournaments td:nth-child(3) {
-    text-align: center;
+    width: 20%;
 }
 
 span {

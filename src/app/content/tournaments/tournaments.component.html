@@ -1,15 +1,41 @@
+<h3>Предстоящие турниры</h3>
+@if (isLoadingUpcoming) {
+<p>
+    Загрузка данных...
+</p>
+}
+
+@else {
 <table class="tournaments">
     <tbody>
-        @for (tournament of tournaments; track tournament) {
-        <tr>
-            <nav>
-                <a [routerLink]="['/tournaments', tournament.id]" routerLinkActive="activebutton"
-                    ariaCurrentWhenActive="page">
-                    <td>{{ tournament.name }}</td>
-                </a>
-            </nav>
+        @for (tournament of upcomingTournaments; track tournament) {
+        <tr [routerLink]="['/tournaments', tournament.id]" routerLinkActive="active">
+            <td>{{ tournament.dateStart }}</td>
+            <td>{{ tournament.name }}</td>
+            <td>Минск</td>
         </tr>
-
         }
     </tbody>
 </table>
+}
+
+<h3>Завершившиеся турниры</h3>
+@if (isLoadingPast) {
+<p>
+    Загрузка данных...
+</p>
+}
+
+@else {
+<table class="tournaments">
+    <tbody>
+        @for (tournament of pastTournaments; track tournament) {
+        <tr [routerLink]="['/tournaments', tournament.id]" routerLinkActive="active">
+            <td>{{ tournament.dateStart }}</td>
+            <td>{{ tournament.name }}</td>
+            <td>Минск</td>
+        </tr>
+        }
+    </tbody>
+</table>
+}

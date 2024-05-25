@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -13,5 +13,13 @@ export class RatingApiService {
 
   getTeams(tournamentId: number) {
     return this.httpClient.get<any[]>(`${this.baseUrl}/tournaments/${tournamentId}/teams`);
+  }
+
+  getTournaments(countryId: number, beforeToday: boolean) {
+    let params = new HttpParams()
+      .set('countryId', countryId.toString())
+      .set('beforeToday', beforeToday.toString());
+  
+    return this.httpClient.get<any[]>(`${this.baseUrl}/tournaments`, { params });
   }
 }
