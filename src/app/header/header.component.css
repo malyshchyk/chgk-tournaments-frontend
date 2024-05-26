@@ -1,0 +1,11 @@
+app-avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+app-region {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}

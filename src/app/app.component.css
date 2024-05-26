@@ -1,8 +1,13 @@
-app-header,
 app-footer {
   display: flex;
   text-align: center;
   justify-content: center;
+}
+
+app-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  min-width: 100%;
 }
 
 app-content {
