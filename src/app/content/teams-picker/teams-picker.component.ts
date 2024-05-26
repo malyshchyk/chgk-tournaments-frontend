@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RatingApiService } from '../../rating-api.service';
 import { ActivatedRoute, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { LoaderComponent } from '../loader/loader.component';
 
 @Component({
   selector: 'app-teams-picker',
@@ -9,6 +10,7 @@ import { ActivatedRoute, RouterLink, RouterLinkActive, RouterOutlet } from '@ang
     RouterOutlet,
     RouterLink,
     RouterLinkActive,
+    LoaderComponent,
   ],
   templateUrl: './teams-picker.component.html',
   styleUrl: './teams-picker.component.css'

@@ -1,7 +1,5 @@
 @if (isLoading) {
-<p>
-    Загрузка данных...
-</p>
+    <app-loader></app-loader>
 }
 @else if (!teams.length) {
     <p>
@@ -26,7 +24,7 @@
     <table class="teamlist">
         <thead>
             <tr>
-                <th><span (click)="clearAll()">Clear</span></th>
+                <th><span class="button" (click)="clearAll()">Clear</span></th>
                 <th>Команда</th>
                 <th>Цена</th>
             </tr>

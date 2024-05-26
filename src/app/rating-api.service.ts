@@ -15,10 +15,9 @@ export class RatingApiService {
     return this.httpClient.get<any[]>(`${this.baseUrl}/tournaments/${tournamentId}/teams`);
   }
 
-  getTournaments(countryId: number, beforeToday: boolean) {
+  getTournaments(countryId: number) {
     let params = new HttpParams()
-      .set('countryId', countryId.toString())
-      .set('beforeToday', beforeToday.toString());
+      .set('countryId', countryId.toString());
   
     return this.httpClient.get<any[]>(`${this.baseUrl}/tournaments`, { params });
   }

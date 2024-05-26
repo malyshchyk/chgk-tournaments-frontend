@@ -59,8 +59,3 @@ nav {
 .teamlist td:nth-child(3) {
     text-align: center;
 }
-
-span {
-    text-decoration: underline;
-    cursor: pointer;
-}

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet, RouterLink, RouterLinkActive, ActivatedRoute } from '@angular/router';
 import { RatingApiService } from '../../rating-api.service';
+import { LoaderComponent } from '../loader/loader.component';
 
 @Component({
   selector: 'app-current-tournaments',
@@ -9,15 +10,14 @@ import { RatingApiService } from '../../rating-api.service';
     RouterOutlet,
     RouterLink,
     RouterLinkActive,
+    LoaderComponent,
   ],
   templateUrl: './tournaments.component.html',
   styleUrl: './tournaments.component.css'
 })
 export class TournamentsComponent {
-  isLoadingPast = false;
-  isLoadingUpcoming = false;
+  isLoading = false;
   countryId = 5;
-  pastTournaments: any[] = [];
   upcomingTournaments: any[] = [];
 
   constructor(
@@ -30,15 +30,10 @@ export class TournamentsComponent {
   }
 
   getTournaments(countryId: number): void {
-    this.isLoadingPast = true;
-    this.isLoadingUpcoming = true;
-    this.ratingApiService.getTournaments(countryId, true).subscribe(response => {
-      this.pastTournaments = response;
-      this.isLoadingPast = false;
-    });
-    this.ratingApiService.getTournaments(countryId, false).subscribe(response => {
+    this.isLoading = true;
+    this.ratingApiService.getTournaments(countryId).subscribe(response => {
       this.upcomingTournaments = response;
-      this.isLoadingUpcoming = false;
+      this.isLoading = false;
     });
   }
 }

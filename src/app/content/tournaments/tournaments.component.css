@@ -30,9 +30,9 @@
     width: 20%;
 }
 
-span {
-    text-decoration: underline;
-    cursor: pointer;
+p {
+    text-align: center;
+    color: rgba(128, 128, 128, 0.5);
 }
 
 a {

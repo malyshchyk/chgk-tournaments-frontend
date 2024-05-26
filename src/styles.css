@@ -8,3 +8,14 @@ app-root {
   gap: 1rem;
   min-height: 100vh;
 }
+
+app-loader {
+  display: flex;
+  justify-content: center;
+  place-items: center;
+}
+
+.button {
+  text-decoration: underline;
+  cursor: pointer;
+}
