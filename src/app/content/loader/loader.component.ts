@@ -8,17 +8,4 @@ import { Component } from '@angular/core';
   styleUrl: './loader.component.css'
 })
 export class LoaderComponent {
-  phrases = [
-    "Апишка рейтинга медленная пздц",
-    "Жоска фильтруем",
-    "Продам гараж",
-    "Сервер потеет как может потерпи",
-    "Зато бесплатно",
-  ]
-  randomPhrase!: string;
-
-  constructor() {
-    const randomIndex = Math.floor(Math.random() * this.phrases.length);
-    this.randomPhrase = this.phrases[randomIndex];
-  }
 }
