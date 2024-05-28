@@ -11,32 +11,30 @@ import { RegionService } from './region.service';
 })
 export class RegionComponent {
   regions = [
-    {"id": 5, "name": "BY"},
-    {"id": 21, "name": "RU"},
-    {"id": 35, "name": "PL"},
+    { "id": "BY", "name": "BY" },
+    { "id": "RU", "name": "RU" },
+    { "id": "EU", "name": "EU" },
+    { "id": "East", "name": "East" },
   ]
-  userRegionId!: number;
+  userRegionName!: string;
 
-  constructor(private regionService: RegionService) {}
+  constructor(private regionService: RegionService) { }
 
   async ngOnInit() {
     const response = await axios.get('https://ipapi.co/json/');
     switch (response.data.country) {
-      case 'BY':
-        this.userRegionId = 5;
-        break;
-      case 'RU':
-        this.userRegionId = 21;
+      case 'BY' || 'RU':
+        this.userRegionName = response.data.country;
         break;
       default:
-        this.userRegionId = 35;
+        this.userRegionName = "EU";
         break;
     }
-    this.regionService.setUserRegionId(this.userRegionId);
+    this.regionService.setUserRegionName(this.userRegionName);
   }
 
-  onRegionSelected(regionId: string) {
-    this.userRegionId = Number(regionId);
-    this.regionService.setUserRegionId(this.userRegionId);
+  onRegionSelected(regionName: string) {
+    this.userRegionName = regionName;
+    this.regionService.setUserRegionName(this.userRegionName);
   }
 }

@@ -5,15 +5,15 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class RegionService {
-  private userRegionId = new BehaviorSubject<number>(35);
+  private userRegionName = new BehaviorSubject<string>("");
 
   constructor() { }
 
-  setUserRegionId(regionId: number) {
-    this.userRegionId.next(regionId);
+  setUserRegionName(regionName: string) {
+    this.userRegionName.next(regionName);
   }
 
-  getUserRegionId() {
-    return this.userRegionId.asObservable();
+  getUserRegionName() {
+    return this.userRegionName.asObservable();
   }
 }

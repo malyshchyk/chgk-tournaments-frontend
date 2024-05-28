@@ -18,7 +18,7 @@ import { RegionService } from '../../header/region/region.service';
 })
 export class TournamentsComponent {
   isLoading = false;
-  countryId!: number;
+  regionName!: string;
   upcomingTournaments: any[] = [];
 
   constructor(
@@ -26,16 +26,19 @@ export class TournamentsComponent {
     private route: ActivatedRoute,
     private regionService: RegionService
   ) {
-    this.regionService.getUserRegionId().subscribe(regionId => {
-      this.countryId = regionId;
-      this.getTournaments(this.countryId);
+    this.regionService.getUserRegionName().subscribe(regionName => {
+      if (!regionName) {
+        return;
+      }
+      this.regionName = regionName;
+      this.getTournaments(this.regionName);
     });
     this.route.params.subscribe(() => {});
   }
 
-  getTournaments(countryId: number): void {
+  getTournaments(regionName: string): void {
     this.isLoading = true;
-    this.ratingApiService.getTournaments(countryId).subscribe(response => {
+    this.ratingApiService.getTournaments(regionName).subscribe(response => {
       this.upcomingTournaments = response;
       this.isLoading = false;
     });

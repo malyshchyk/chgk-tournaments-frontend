@@ -1,5 +1,5 @@
 <select #regionSelect (change)="onRegionSelected(regionSelect.value)">
     @for (region of regions; track region) {
-    <option value="{{ region.id }}" [selected]="region.id === userRegionId">{{ region.name }}</option>
+    <option value="{{ region.id }}" [selected]="region.name === userRegionName">{{ region.name }}</option>
     }
 </select>
