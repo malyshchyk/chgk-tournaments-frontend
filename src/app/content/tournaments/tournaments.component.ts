@@ -21,6 +21,13 @@ export class TournamentsComponent {
   regionName!: string;
   upcomingTournaments: any[] = [];
 
+  tournamentsRanges = [
+    { "value": "3", "name": "3 месяца" },
+    { "value": "6", "name": "6 месяцев" },
+    { "value": "12", "name": "12 месяцев" },
+  ]
+  userTournamentRangeValue!: string;
+
   constructor(
     private ratingApiService: RatingApiService,
     private route: ActivatedRoute,
@@ -31,6 +38,7 @@ export class TournamentsComponent {
         return;
       }
       this.regionName = regionName;
+      this.userTournamentRangeValue = "3";
       this.getTournaments(this.regionName);
     });
     this.route.params.subscribe(() => {});
@@ -38,7 +46,16 @@ export class TournamentsComponent {
 
   getTournaments(regionName: string): void {
     this.isLoading = true;
-    this.ratingApiService.getTournaments(regionName).subscribe(response => {
+    this.ratingApiService.getTournaments(regionName, this.userTournamentRangeValue).subscribe(response => {
+      this.upcomingTournaments = response;
+      this.isLoading = false;
+    });
+  }
+
+  onTournamentRangeSelected(tournamentRange: string) {
+    this.userTournamentRangeValue = tournamentRange;
+    this.isLoading = true;
+    this.ratingApiService.getTournaments(this.regionName, tournamentRange).subscribe(response => {
       this.upcomingTournaments = response;
       this.isLoading = false;
     });

@@ -1,6 +1,29 @@
-<h3>Предстоящие турниры</h3>
+<table class="tournaments-header">
+    <tbody>
+        <tr>
+            <td>
+                <h3>Предстоящие турниры</h3>
+            </td>
+            <td></td>
+            <td>
+                <select #tournamentRangeSelect (change)="onTournamentRangeSelected(tournamentRangeSelect.value)">
+                    @for (range of tournamentsRanges; track range) {
+                        <option value={{range.value}} [selected]="range.value === userTournamentRangeValue">{{ range.name }}</option>
+                    }
+                </select>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
 @if (isLoading) {
 <app-loader></app-loader>
+}
+
+@else if (!upcomingTournaments.length) {
+<p>
+    В ближайшие {{ tournamentRangeSelect.name }} в выбраном регионе нет турниров
+</p>
 }
 
 @else {

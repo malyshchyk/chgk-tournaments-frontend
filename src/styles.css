@@ -19,3 +19,9 @@ app-loader {
   text-decoration: underline;
   cursor: pointer;
 }
+
+select {
+  background: transparent;
+  border: none;
+  outline: none;
+}

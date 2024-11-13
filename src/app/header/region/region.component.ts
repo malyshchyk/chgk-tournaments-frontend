@@ -23,7 +23,8 @@ export class RegionComponent {
   async ngOnInit() {
     const response = await axios.get('https://ipapi.co/json/');
     switch (response.data.country) {
-      case 'BY' || 'RU':
+      case 'BY':
+      case 'RU':
         this.userRegionName = response.data.country;
         break;
       default:

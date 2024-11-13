@@ -15,7 +15,7 @@ export class RatingApiService {
     return this.httpClient.get<any[]>(`${this.baseUrl}/tournaments/${tournamentId}/teams`);
   }
 
-  getTournaments(regionName: string) {
+  getTournaments(regionName: string, upperBoundMonths: string) {
     const eastCountries = [
       3, 4, 10, 11, 13, 16, 23, 25, 46
     ]
@@ -45,6 +45,7 @@ export class RatingApiService {
         }
         break;
     }
+    params = params.append('upperBoundMonths', upperBoundMonths);
 
     return this.httpClient.get<any[]>(`${this.baseUrl}/tournaments`, { params });
   }

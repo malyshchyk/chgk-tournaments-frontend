@@ -1,3 +1,17 @@
+.tournaments-header {
+    width: 100%;
+    overflow: hidden;
+}
+
+.tournaments-header td:first-child {
+    width: 40%;
+}
+
+.tournaments-header td:nth-child(3) {
+    width: 20%;
+    text-align: right;
+}
+
 .tournaments {
     width: 100%;
     border: 1px solid rgba(128, 128, 128, 0.5);
