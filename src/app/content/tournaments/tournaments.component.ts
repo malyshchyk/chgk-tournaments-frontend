@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { RouterOutlet, RouterLink, RouterLinkActive, ActivatedRoute } from '@angular/router';
+import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { distinctUntilChanged } from 'rxjs/operators';
 import { RatingApiService } from '../../rating-api.service';
 import { LoaderComponent } from '../loader/loader.component';
 import { RegionService } from '../../header/region/region.service';
@@ -25,39 +26,32 @@ export class TournamentsComponent {
     { "value": "3", "name": "3 месяца" },
     { "value": "6", "name": "6 месяцев" },
     { "value": "12", "name": "12 месяцев" },
-  ]
+  ];
   userTournamentRangeValue!: string;
+
+  async ngOnInit(): Promise<void> {
+    this.isLoading = true;
+    await this.ratingApiService.preloadCache(["BY", "RU", "EU", "East"], "12");
+    this.isLoading = false;
+    this.upcomingTournaments = this.ratingApiService.getTournamentsFromCache(this.regionName, this.userTournamentRangeValue);
+  }
 
   constructor(
     private ratingApiService: RatingApiService,
-    private route: ActivatedRoute,
     private regionService: RegionService
   ) {
-    this.regionService.getUserRegionName().subscribe(regionName => {
+    this.regionService.getUserRegionName().pipe(distinctUntilChanged()).subscribe(regionName => {
       if (!regionName) {
         return;
       }
       this.regionName = regionName;
-      this.userTournamentRangeValue = "3";
-      this.getTournaments(this.regionName);
-    });
-    this.route.params.subscribe(() => {});
-  }
-
-  getTournaments(regionName: string): void {
-    this.isLoading = true;
-    this.ratingApiService.getTournaments(regionName, this.userTournamentRangeValue).subscribe(response => {
-      this.upcomingTournaments = response;
-      this.isLoading = false;
+      this.userTournamentRangeValue = this.userTournamentRangeValue || "3";
+      this.upcomingTournaments = this.ratingApiService.getTournamentsFromCache(this.regionName, this.userTournamentRangeValue);
     });
   }
 
-  onTournamentRangeSelected(tournamentRange: string) {
+  onTournamentRangeSelected(tournamentRange: string): void {
     this.userTournamentRangeValue = tournamentRange;
-    this.isLoading = true;
-    this.ratingApiService.getTournaments(this.regionName, tournamentRange).subscribe(response => {
-      this.upcomingTournaments = response;
-      this.isLoading = false;
-    });
+    this.upcomingTournaments = this.ratingApiService.getTournamentsFromCache(this.regionName, this.userTournamentRangeValue);
   }
 }

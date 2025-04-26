@@ -1,6 +1,6 @@
-# fantasy-chgk
+# chgk-tournaments
 
-Angular frontend for Fantasy Chgk application. 
+Angular frontend for Chgk Tournaments application. 
 
 Below is a deployment guide for self-hosted solution with AWS EC2 as proxy for VPN and static IP.
 

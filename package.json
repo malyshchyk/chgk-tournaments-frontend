@@ -1,7 +1,7 @@
 {
-  "name": "fantasy-chgk",
+  "name": "chgk-tournaments",
   "version": "0.0.0",
-  "description": "Angular frontend for Fantasy game",
+  "description": "Angular frontend for Chgk tournaments",
   "license": "MIT",
   "scripts": {
     "ng": "ng",

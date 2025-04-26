@@ -35,6 +35,9 @@ export class RegionComponent {
   }
 
   onRegionSelected(regionName: string) {
+    if (this.userRegionName === regionName) {
+      return;
+    }
     this.userRegionName = regionName;
     this.regionService.setUserRegionName(this.userRegionName);
   }

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { TitleComponent } from './title/title.component';
-import { TeamsPickerComponent } from './teams-picker/teams-picker.component';
 import { TournamentsComponent } from './tournaments/tournaments.component';
 import { RouterOutlet } from '@angular/router';
 
@@ -9,7 +8,6 @@ import { RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [
     TitleComponent,
-    TeamsPickerComponent,
     TournamentsComponent,
     RouterOutlet,
   ],

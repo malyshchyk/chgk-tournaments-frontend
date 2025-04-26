@@ -8,7 +8,8 @@
             <td>
                 <select #tournamentRangeSelect (change)="onTournamentRangeSelected(tournamentRangeSelect.value)">
                     @for (range of tournamentsRanges; track range) {
-                        <option value={{range.value}} [selected]="range.value === userTournamentRangeValue">{{ range.name }}</option>
+                    <option value={{range.value}} [selected]="range.value === userTournamentRangeValue">{{ range.name }}
+                    </option>
                     }
                 </select>
             </td>
@@ -30,11 +31,18 @@
 <table class="tournaments">
     <tbody>
         @for (tournament of upcomingTournaments; track tournament) {
-        <tr [routerLink]="['/tournaments', tournament.id]" routerLinkActive="active">
+
+        <tr>
             <td>{{ tournament.dateStart }}</td>
-            <td>{{ tournament.name }}</td>
+            <td>
+                <a href="https://rating.chgk.info/tournament/{{tournament.id}}" target="_blank">
+                    {{ tournament.name}}
+                </a>
+            </td>
             <td>{{ tournament.town }}</td>
+
         </tr>
+
         }
     </tbody>
 </table>
