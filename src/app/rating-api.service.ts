@@ -19,7 +19,7 @@ export class RatingApiService {
     cutoffDate.setMonth(now.getMonth() + months);
 
     return tournaments.filter(tournament => {
-      const tournamentDate = new Date(tournament.dateStart);
+      const tournamentDate = new Date(tournament.dateEnd);
       return tournamentDate >= now && tournamentDate <= cutoffDate;
     });
   }
